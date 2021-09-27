@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 
-const BackTracking = () => (
-    <h1>
+export default function BackTracking(){
+    return (<div>
         백트래킹
-    </h1>
-)
-export default BackTracking
+    </div>)
+}
+
+
