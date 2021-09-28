@@ -6,25 +6,31 @@ import { BackTracking, BruteForce, DivideConquer, DynamicProgramming, Greedy } f
 import { Mathematics } from "datastructure";
 import {Home} from 'common/index'
 import { Counter } from "common/index";
-
+import {createStore , combineReducers} from 'redux'
+import {Provider} from 'react-redux'
+import {todoReducer} from 'reducers'
+import { Router } from "@material-ui/icons";
+const rootReducer = combineReducers({todoReducer})
+const store = createStore(rootReducer)
 const App = () => (
-  <>
-  <Navi/>
-  <Switch>
-    <Route exact path='/' component= { Home }/>
-    <Redirect from='/home' to= { '/' }/>
-    <Route exact path = '/mathematics' component = {Mathematics}/>
-    <Route exact path = '/counter' component = {Counter}/>
-    <Route exact path = '/todo' component = {Todo}/>
-    <Route exact path = '/linear' component = {Linear}/>
-    <Route exact path = '/nonlinear' component = {Nonlinear}/>
-    <Route exact path = '/backTracking' component = {BackTracking}/>
-    <Route exact path = '/bruteForce' component = {BruteForce}/>
-    <Route exact path = '/divideConquer' component = {DivideConquer}/>
-    <Route exact path = '/dynamicProgramming' component = {DynamicProgramming}/>
-    <Route exact path = '/greedy' component = {Greedy}/>
-    
-  </Switch>
-  </>
+    <Provider store = {store}> 
+      <Navi/>
+        <Switch>
+          <Route exact path='/' component= { Home }/>
+          <Redirect from='/home' to= { '/' }/>
+          <Route exact path = '/mathematics' component = {Mathematics}/>
+          <Route exact path = '/counter' component = {Counter}/>
+          <Route exact path = '/todo' component = {Todo}/>
+          <Route exact path = '/linear' component = {Linear}/>
+          <Route exact path = '/nonlinear' component = {Nonlinear}/>
+          <Route exact path = '/backTracking' component = {BackTracking}/>
+          <Route exact path = '/bruteForce' component = {BruteForce}/>
+          <Route exact path = '/divideConquer' component = {DivideConquer}/>
+          <Route exact path = '/dynamicProgramming' component = {DynamicProgramming}/>
+          <Route exact path = '/greedy' component = {Greedy}/>
+          
+        </Switch>
+    </Provider>
+
 )
 export default App
