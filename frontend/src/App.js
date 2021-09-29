@@ -10,7 +10,7 @@ import {createStore , combineReducers} from 'redux'
 import {Provider} from 'react-redux'
 import {todoReducer,userReducer} from 'reducers'
 import { Router } from "@material-ui/icons";
-const rootReducer = combineReducers({todoReducer, userReducer})
+const rootReducer = combineReducers({userReducer, todoReducer})
 const store = createStore(rootReducer)
 const App = () => (
     <Provider store = {store}> 

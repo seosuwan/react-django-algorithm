@@ -27,6 +27,4 @@ export default function TodoList() {
 }
     
     
-                
-
 const TodoListDiv = styled.div`text-align: center;`
