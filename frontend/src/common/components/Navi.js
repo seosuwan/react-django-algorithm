@@ -7,6 +7,7 @@ const Navi = () => (
     <NaviDiv>
      
      <NaviList>
+            <NaviItem><Link to='/signUp'style={{textDecorationLine:'none',color:'black'}}><strong>SignUp</strong></Link></NaviItem>
             <NaviItem><Link to='/todo'style={{textDecorationLine:'none',color:'black'}}><strong>Todo</strong></Link></NaviItem>
             <NaviItem><Link to='/counter'style={{textDecorationLine:'none',color:'black'}}><strong>Counter</strong></Link></NaviItem>
             <NaviItem><Link to='/math'style={{textDecorationLine:'none',color:'black'}}><strong>math</strong></Link></NaviItem>

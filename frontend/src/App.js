@@ -1,6 +1,6 @@
 import React from "react";
 import {Redirect,Route,Switch} from 'react-router-dom'
-import { Navi, Todo } from "common";
+import { Navi, SignUp, Todo } from "common";
 import { Linear, Nonlinear } from "datastructure";
 import { BackTracking, BruteForce, DivideConquer, DynamicProgramming, Greedy } from "algorithm";
 import { Mathematics } from "datastructure";
@@ -8,9 +8,9 @@ import {Home} from 'common/index'
 import { Counter } from "common/index";
 import {createStore , combineReducers} from 'redux'
 import {Provider} from 'react-redux'
-import {todoReducer} from 'reducers'
+import {todoReducer,userReducer} from 'reducers'
 import { Router } from "@material-ui/icons";
-const rootReducer = combineReducers({todoReducer})
+const rootReducer = combineReducers({todoReducer, userReducer})
 const store = createStore(rootReducer)
 const App = () => (
     <Provider store = {store}> 
@@ -18,6 +18,7 @@ const App = () => (
         <Switch>
           <Route exact path='/' component= { Home }/>
           <Redirect from='/home' to= { '/' }/>
+          <Route exact path = '/signUp' component = {SignUp}/>
           <Route exact path = '/mathematics' component = {Mathematics}/>
           <Route exact path = '/counter' component = {Counter}/>
           <Route exact path = '/todo' component = {Todo}/>
@@ -34,3 +35,4 @@ const App = () => (
 
 )
 export default App
+

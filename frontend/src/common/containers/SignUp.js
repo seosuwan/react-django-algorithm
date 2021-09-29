@@ -1,13 +1,12 @@
-import { ToDoList ,ToDoInput } from "common";
-
+import { UserJoin, UserList } from 'common';
 import styled from 'styled-components';
 
-export default function Todo (){
+export default function SignUp (){
     
     return (
         <Div>
-        <ToDoInput/>
-        <ToDoList/>
+        <UserJoin/>
+        <UserList/>
         </Div>
     )
 }

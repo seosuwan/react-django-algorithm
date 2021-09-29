@@ -15,12 +15,12 @@ class TestSorting(unittest.TestCase):
         self.assertEqual(arr, [1, 2, 3, 4, 5, 6, 7, 8, 9])
 
     def test_merge_sort(self):
-        arr = [9, 8, 7, 6, 5, 4, 3, 2, 1]
+        arr = [5, 8, 2, 6, 3, 1, 7, 9, 4]
         arr = Sorting.merge_sort(arr)
         self.assertEqual(arr, [1, 2, 3, 4, 5, 6, 7, 8, 9])
 
     def test_quick_sort(self):
-        arr = [9, 8, 7, 6, 5, 4, 3, 2, 1]
+        arr = [5, 8, 2, 6, 3, 1, 7, 9, 4]
         arr = Sorting.quick_sort(arr)
         self.assertEqual(arr, [1, 2, 3, 4, 5, 6, 7, 8, 9])
 

@@ -1,40 +1,40 @@
-import React,{useState} from "react"; //{}는 구조분해
-import styled from 'styled-components';
-import { v4 as uuidv4} from 'uuid'
+import React, {useState} from "react";
 import { useDispatch } from "react-redux";
+import { v4 as uuidv4} from 'uuid'
+import styled from 'styled-components'
 import { addTodoAction } from "reducers/todo.reducer";
-export default function ToDoInput (){
-    const [todo , setTodo] = useState('')
+export default function TodoInput() {
+    const [todo, setTodo] = useState('')
     const dispatch = useDispatch()
-    const submitForm = e => {
+    const submitForm = e =>{
         e.preventDefault()
         const newTodo = {
-            id:uuidv4(),
+            id: uuidv4(),
             name: todo,
             complete: false
         }
         addTodo(newTodo)
-        setTodo('')   
+        setTodo('')
     }
     const addTodo = todo => dispatch(addTodoAction(todo))
-    const handleChange = e => {
+    const handleChange = e =>{
         e.preventDefault()
         setTodo(e.target.value)
-        
-        
-    }
-    return (
+     }
+   
+    return(
         <form onSubmit={submitForm} method='POST'>
-        <Div>
-        <input type = 'text'
-                id='todo'
-                name = 'todo'
-                placeholder = "할일 입력"
-                value = {todo}
-                onChange={handleChange} />
-        <input type = 'submit' 
-                value='ADD'/><br/>
-        </Div></form> 
+        <CounterDiv>
+            <input type='text' 
+                    id='todo'
+                    name = 'todo'
+                    placeholder="할일 입력"
+                    value = {todo}
+                    onChange={handleChange} />
+            <input type='submit' 
+                    value='ADD' /><br/>
+        </CounterDiv></form>
     )
 }
-const Div = styled.div `text-align: center; margin: 20em`
+
+const CounterDiv = styled.div`text-align: center;`
