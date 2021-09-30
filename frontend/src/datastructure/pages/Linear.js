@@ -1,9 +1,10 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+import styled from 'styled-components'
 
 const Linear = () => (
-    <div>
+    <H1>
         선형
-    </div>
+    </H1>
 )
 export default Linear
+const H1 = styled.h1`text-align: center;`

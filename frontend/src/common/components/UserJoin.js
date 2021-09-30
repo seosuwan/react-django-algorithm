@@ -14,6 +14,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { addUserAction } from "reducers/user.reducer";
 import { useDispatch } from 'react-redux';
+import { userRegister } from "api";
 
 
 function Copyright(props) {
@@ -32,28 +33,36 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function UserJoin() {
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const dispatch = useDispatch()
+    const [user, setUser] = useState({
+      password:'',
+      username:'',
+      birth:'',
+      address:'',
+      email:'',
+      name:''
 
-   
+    })
+    const {password,username,birth,address,email,name} = user
+
     const handleSubmit = e => {
-
         e.preventDefault();
-        const newUser = {
-          email,
-          password
-        }
-        addUser(newUser)
-        setEmail('')
-        setPassword('')
+        alert(`가입 회원정보:${JSON.stringify(user)}`)
+        userRegister({user})
+        .then(res => {alert(`회원가입완료: ${res.data.result}`)})
+        .catch(err => {alert(`회원가입 실패: ${err}`)})
       };
-    
-    const addUser = user => dispatch(addUserAction(user))
-    const handleChange = e =>{
-        e.preventDefault()
-        setEmail(e.target.value)
-     }
+      
+      //const addUser = user => dispatch(addUserAction(user))
+      const handleChange = e =>{
+          e.preventDefault()
+          const {name, value} = e.target
+          // alert(`name: ${name} , value: ${value}`)
+          setUser({
+            ...user,
+            [name]: value
+          })
+        }
+      
      return (
        <ThemeProvider theme={theme}>
          <Container component="main" maxWidth="xs">
@@ -73,6 +82,28 @@ export default function UserJoin() {
                Sign in
              </Typography>
              <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+             <TextField
+                 margin="normal"
+                 required
+                 fullWidth
+                 name="username"
+                 label="username"
+                 type="text"
+                 id="username"
+                 value={username}
+                 onChange={handleChange}
+               />
+               <TextField
+                 margin="normal"
+                 required
+                 fullWidth
+                 name="name"
+                 label="name"
+                 type="text"
+                 id="name"
+                 value={name}
+                 onChange={handleChange}
+               />
                <TextField
                  margin="normal"
                  required
@@ -80,7 +111,7 @@ export default function UserJoin() {
                  id="email"
                  label="Email Address"
                  name="email"
-                 autoComplete="email"
+                 value={email}
                  autoFocus
                  onChange={handleChange}
                />
@@ -92,7 +123,30 @@ export default function UserJoin() {
                  label="Password"
                  type="password"
                  id="password"
-                 autoComplete="current-password"
+                 value={password}
+                 onChange={handleChange}
+               />
+               <TextField
+                 margin="normal"
+                 required
+                 fullWidth
+                 name="birth"
+                 label="birth"
+                 type="text"
+                 id="birth"
+                 value={birth}
+                 onChange={handleChange}
+               />
+               <TextField
+                 margin="normal"
+                 required
+                 fullWidth
+                 name="address"
+                 label="address"
+                 type="text"
+                 id="address"
+                 value={address}
+                 onChange={handleChange}
                />
                <FormControlLabel
                  control={<Checkbox value="remember" color="primary" />}
@@ -105,6 +159,14 @@ export default function UserJoin() {
                  sx={{ mt: 3, mb: 2 }}
                >
                  Sign In
+               </Button>
+               <Button
+                 type="button"
+                 fullWidth
+                 variant="contained"
+                 sx={{ mt: 3, mb: 2 }}
+               >
+                 Cancel
                </Button>
                <Grid container>
                  <Grid item xs>
@@ -125,6 +187,3 @@ export default function UserJoin() {
        </ThemeProvider>
      );
    }
-   
-
-

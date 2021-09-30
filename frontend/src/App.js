@@ -24,10 +24,10 @@ const App = () => (
           <Route exact path = '/todo' component = {Todo}/>
           <Route exact path = '/linear' component = {Linear}/>
           <Route exact path = '/nonlinear' component = {Nonlinear}/>
-          <Route exact path = '/backTracking' component = {BackTracking}/>
-          <Route exact path = '/bruteForce' component = {BruteForce}/>
-          <Route exact path = '/divideConquer' component = {DivideConquer}/>
-          <Route exact path = '/dynamicProgramming' component = {DynamicProgramming}/>
+          <Route exact path = '/back-tracking' component = {BackTracking}/>
+          <Route exact path = '/brute-force' component = {BruteForce}/>
+          <Route exact path = '/divide-conquer' component = {DivideConquer}/>
+          <Route exact path = '/dynamic-programming' component = {DynamicProgramming}/>
           <Route exact path = '/greedy' component = {Greedy}/>
           
         </Switch>
