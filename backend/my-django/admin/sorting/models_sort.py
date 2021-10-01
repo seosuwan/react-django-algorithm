@@ -1,10 +1,26 @@
 from dataclasses import dataclass
 
+from Cython.Compiler.ExprNodes import ListNode
+
 
 @dataclass
 class Sorting(object):
 
     random_arr: []
+
+
+    @property
+    def val(self) -> 0: return self._val
+    @val.setter
+    def val(self, val): self._val = val
+
+    @property
+    def next(self) -> None:
+        return self.next
+
+    @next.setter
+    def next(self, next):
+        self.next = next
 
     @property
     def random_arr(self) -> []: return self._random_arr
@@ -56,5 +72,13 @@ class Sorting(object):
             else:
                 arr2.append(value)
         return Sorting.quick_sort(arr1) + Sorting.quick_sort(arr2) + Sorting.quick_sort(arr3)
+
+    @staticmethod
+    def merge_two_sorted(l1: ListNode ,l2 : ListNode) -> ListNode:
+        if (not l1) or (l2 and l1 > l2):
+            l1, l2 = l2, l1
+        if l1:
+            l1.next = Sorting.merge_two_sorted(l1.next, l2)
+        return l1
 
 
