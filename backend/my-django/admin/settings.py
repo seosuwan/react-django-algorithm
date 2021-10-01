@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'admin.user',
+    'admin.housing',
     'admin.common',
     'rest_framework',
     'corsheaders',
