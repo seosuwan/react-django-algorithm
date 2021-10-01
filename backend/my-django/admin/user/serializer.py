@@ -1,8 +1,5 @@
-
 from rest_framework import serializers
-# pip install Django django-rest-framework
-from .models import UserVo as user
-
+from .models import User as user
 
 class UserSerializer(serializers.Serializer):
     username = serializers.CharField()
