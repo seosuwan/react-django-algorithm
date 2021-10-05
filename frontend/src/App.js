@@ -1,17 +1,17 @@
 import React from "react";
 import {Redirect,Route,Switch} from 'react-router-dom'
-import { Navi, SignUp, Todo } from "common";
-import { Linear, Nonlinear } from "datastructure";
-import { BackTracking, BruteForce, DivideConquer, DynamicProgramming, Greedy } from "algorithm";
-import { Mathematics } from "datastructure";
-import {Home} from 'common/index'
-import { Counter } from "common/index";
+import { Provider } from 'react-redux'
+import { Navi,Home} from "common";
+import { BackTracking, BruteForce, DivideConquer, DynamicProgramming, Greedy } from "features/algorithm";
+import { Mathematics,Linear, Nonlinear } from "features/datastructure";
+//import { Counter } from "features/counter";
 import {createStore , combineReducers} from 'redux'
-import {Provider} from 'react-redux'
-import {todoReducer,userReducer} from 'reducers'
-import { Router } from "@material-ui/icons";
-const rootReducer = combineReducers({userReducer, todoReducer})
-const store = createStore(rootReducer)
+import { CounterOld } from "features/counterOld";
+import { SignUp, UserList, UserJoin, Signin } from "features/user";
+import { Todo, ToDoInput, ToDoList } from "features/todos";
+import { store } from "app/store";
+
+
 const App = () => (
     <Provider store = {store}> 
       <Navi/>
@@ -20,7 +20,7 @@ const App = () => (
           <Redirect from='/home' to= { '/' }/>
           <Route exact path = '/signUp' component = {SignUp}/>
           <Route exact path = '/mathematics' component = {Mathematics}/>
-          <Route exact path = '/counter' component = {Counter}/>
+          <Route exact path = '/counterOld' component = {CounterOld}/>
           <Route exact path = '/todo' component = {Todo}/>
           <Route exact path = '/linear' component = {Linear}/>
           <Route exact path = '/nonlinear' component = {Nonlinear}/>
@@ -35,4 +35,3 @@ const App = () => (
 
 )
 export default App
-

@@ -1,6 +1,8 @@
-import SignIn from 'common/containers/Signin';
+
 import React from 'react';
-import { connect } from 'api';
+import { connect } from 'common/modules/commonAPI';
+import { Signin } from 'features/user';
+
 
 
 export default function Home (){
@@ -12,7 +14,7 @@ export default function Home (){
         .catch(err => {alert(`접속 실패 : ${err}`)})
     }
     return (<div>
-        <SignIn/>
+        <Signin/>
         <button onClick={handleClick} >Connection</button>
 
     </div>)
