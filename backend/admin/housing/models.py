@@ -6,18 +6,19 @@ from icecream import ic
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import StratifiedShuffleSplit
 
-from admin.common.models import DFrameGenerator
+from admin.common.models import ValueObject
 
 
 class HousingService(object):
 
     def __init__(self):
-        self.dfg = DFrameGenerator()
-        self.dfg.fname = 'admin/housing/data/housing.csv'
-        self.df = self.dfg.create_model()
+        self.vo = ValueObject()
+        self.vo.fname = 'admin/housing/data/housing.csv'
+        self.model = self.vo.create_model()
 
     def housing_info(self):
-        self.dfg.model_info(self.df)
+        self.vo.model_info(self.model)
+
 
 
     '''오늘은 여기까지..'''
@@ -30,8 +31,12 @@ class HousingService(object):
         plt.savefig('admin/housing/image/housing-hist/png')
 
     def split_model(self) -> []:
-        train_set, test_set = train_test_split(self.new_model(), test_size=0.2, random_state=42)
-        return [train_set, train_set]
+        train_set, test_set = train_test_split(self.model, test_size=0.2, random_state=42)
+        print('#' * 100)
+        self.vo.model_info(train_set)
+        print('#' * 100)
+        self.vo.model_info(test_set)
+        return [train_set, test_set]
 
     def income_cat_hist(self):
         h = self.new_model()
