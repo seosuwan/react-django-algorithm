@@ -15,3 +15,13 @@ def crime_model(request):
 def police_position(request):
     CrimeCctvModel().create_police_position()
     return JsonResponse({'result': 'Police Position Success'})
+
+
+def cctv(request):
+    CrimeCctvModel().create_cctv_model()
+    return JsonResponse({'result': 'cctv_model Success'})
+
+
+def population(request):
+    CrimeCctvModel().create_population_model()
+    return JsonResponse({'result': 'population Success'})

@@ -58,7 +58,31 @@ class CrimeCctvModel():
         crime.loc[crime['관서명'] == '종암서', ['구별']] = '성북구'
         crime.loc[crime['관서명'] == '방배서', ['구별']] = '서초구'
         crime.loc[crime['관서명'] == '수서서', ['구별']] = '강남구'
-        crime.to_csv(self.generator.context+'new_data/police_position.csv')
+        crime.to_csv(self.vo.context+'new_data/police_position.csv')
 
-    def create_crime_rate_model(self):
-        pass
+    def create_cctv_model(self):
+        vo = self.vo
+        reader = self.reader
+        printer = self.printer
+        vo.context = 'admin/crime/data/'
+        vo.fname = 'CCTV_in_Seoul'
+        cctv_file_name = reader.new_file(vo)
+        print(f'파일명: {cctv_file_name}')
+        cctv_model= reader.csv(cctv_file_name)
+        cctv_model.rename(columns={'기관명': '구별'}, inplace=True)
+        cctv_model.to_csv(self.vo.context + 'new_data/CCTV_in_Seoul.csv')
+        printer.dframe(cctv_model)
+        return cctv_model
+
+    def create_population_model(self):
+        vo = self.vo
+        reader = self.reader
+        printer = self.printer
+        vo.context = 'admin/crime/data/'
+        vo.fname = 'population_in_Seoul'
+        popu_file_name = reader.new_file(vo)
+        print(f'파일명: {popu_file_name}')
+        population = reader.xls(popu_file_name, 2, "b,d,g,j,n")
+        printer.dframe(population)
+        return population
+

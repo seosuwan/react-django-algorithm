@@ -99,10 +99,10 @@ class Reader(ReaderBase):
         return file.context + file.fname
 
     def csv(self, file) -> object:
-        return pd.read_csv(f'{file}.csv', encoding='CP949', thousands=',')
+        return pd.read_csv(f'{file}.csv', encoding='UTF-8', thousands=',')
 
     def csv_header(self, file, header) -> object:
-        return pd.read_csv(f'{file}.csv', encoding='CP949', thousands=',', header=header)
+        return pd.read_csv(f'{file}.csv', encoding='UTF-8', thousands=',', header=header)
 
     def xls(self, file, header, usecols) -> object:
         return pd.read_excel(f'{file}.xls', header=header, usecols=usecols)
@@ -112,6 +112,8 @@ class Reader(ReaderBase):
 
     def gmaps(self) -> object:
         return googlemaps.Client(key='시크리또')
+
+
 
 
 class Printer(PrinterBase):
