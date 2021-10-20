@@ -111,7 +111,7 @@ class Reader(ReaderBase):
         return json.load(open(f'{file}.json', encoding='CP949'))
 
     def gmaps(self) -> object:
-        return googlemaps.Client(key='시크리또')
+        return googlemaps.Client(key='AIzaSyD9_rnM4i6TtIQ8-8UGzXKqiCwcBwkq7i0')
 
 
 
@@ -123,4 +123,6 @@ class Printer(PrinterBase):
         ic(this.info())
         # ic(this.columns())
         # ic(this.describe())
-        print(this.isnull().sum())
+        print('========================================')
+        print(f'***Non Null Count!!!!! {this.isnull().sum()}')
+        print('========================================')

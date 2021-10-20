@@ -7,4 +7,6 @@ urlpatterns = {
     url(r'police-position', views.police_position),
     url(r'cctv', views.cctv),
     url(r'population', views.population),
+    url(r'merge', views.merge),
+    url(r'sum-crime',views.sum_crime)
 }

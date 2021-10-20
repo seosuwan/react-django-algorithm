@@ -2,7 +2,7 @@ from django.http import JsonResponse
 from rest_framework.decorators import api_view, parser_classes
 from rest_framework.parsers import JSONParser
 
-from admin.crime.models import CrimeCctvModel
+from admin.crime.models_old import CrimeCctvModel
 
 
 @api_view(['GET'])
@@ -25,3 +25,11 @@ def cctv(request):
 def population(request):
     CrimeCctvModel().create_population_model()
     return JsonResponse({'result': 'population Success'})
+
+def merge(request):
+    CrimeCctvModel().merge_model()
+    return JsonResponse({'result' :'merge Success'})
+
+def sum_crime(request):
+    CrimeCctvModel().sum_crime()
+    return JsonResponse({'result' : 'sum Success'})
