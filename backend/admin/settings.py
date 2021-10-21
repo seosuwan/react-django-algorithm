@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'admin.myCV2',
     'admin.iris',
     'admin.tensor',
     'admin.crawling',

@@ -10,3 +10,17 @@ from admin.iris.models import Iris
 def base(request):
     Iris().base()
     return JsonResponse({'Iris': 'Success'})
+
+
+@api_view(['GET'])
+@parser_classes([JSONParser])
+def advanced(request):
+    Iris().advanced()
+    return JsonResponse({'Advanced': 'Success'})
+
+
+@api_view(['GET'])
+@parser_classes([JSONParser])
+def iris_by_tf(request):
+    Iris().iris_by_tf()
+    return JsonResponse({'iris_by_tf': 'Success'})
