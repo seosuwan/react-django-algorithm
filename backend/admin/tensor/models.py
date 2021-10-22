@@ -18,9 +18,9 @@ class TensorFunction(object):
             result = self.tf_function()
 
         elif menu == 'tf_sum':
-            result = self.tf_sum() #결과확인!::::::6
+            result = self.tf_sum()  # 결과확인!::::::6
         elif menu == 'tf_add':
-            result = self.tf_add() #add [2 4 6 8 10],subtract[0 0 0 0 0],
+            result = self.tf_add()  # add [2 4 6 8 10],subtract[0 0 0 0 0],
 
         elif menu == 'create_model':
             result = self.create_model()
@@ -29,7 +29,7 @@ class TensorFunction(object):
             result = self.exec_by_random_data()
 
         elif menu == 'create_tf_empty_model':
-            result = self.create_tf_empty_model() #결과확인!::::::<keras.engine.sequential.Sequential object at 0x0000018621DD90D0>
+            result = self.create_tf_empty_model()  # 결과확인!::::::<keras.engine.sequential.Sequential object at 0x0000018621DD90D0>
 
         elif menu == 'exec_by_random_data':
             result = self.exec_by_random_data()
@@ -38,7 +38,7 @@ class TensorFunction(object):
             result = '해당사항 없음'
         print(f'결과확인!::::::{result}')
 
-    def create_model(self)-> object:
+    def create_model(self) -> object:
         input = tf.keras.Input(shape=(1,))
         output = tf.keras.layers.Dense(1)(input)
         model = tf.keras.Model(input, output)
@@ -49,7 +49,7 @@ class TensorFunction(object):
         x_train, y_train = x[:150], y[:150]
         x_test, y_test = x[:150], y[:150]
         model = tf.keras.models.load_model(f'{self.vo.context}simple_model.h5')
-        history = model.fit(x_train,y_train, epochs=30, validation_split=0.3)
+        history = model.fit(x_train, y_train, epochs=30, validation_split=0.3)
         epochs = np.arange(1, 30 + 1)
         plt.plot(epochs, history.history['loss'], label='Trainaing Loss')
         plt.xlabel('Epoch')
@@ -57,11 +57,9 @@ class TensorFunction(object):
         plt.legend()
         plt.savefig(f'{self.vo.context}simple_model.png')
 
-
-
         # Dense(units=1,input_dim=1)
-        #옵티마이저 sgd 손실함수 mse,활성화함수 ReLu
-        #simple_model.h5로 저장하시오
+        # 옵티마이저 sgd 손실함수 mse,활성화함수 ReLu
+        # simple_model.h5로 저장하시오
 
     def create_tf_empty_model(self):
         # model = keras.models.Sequential([# 객체 하나이니까 아톰이다
@@ -81,22 +79,16 @@ class TensorFunction(object):
 
         model.compile(optimizer='sgd', loss='mse')
         model.save(f'{self.vo.context}simple_model.h5')
-        #손실함수와 옵티마이저는 같이 있어야된다
+        # 손실함수와 옵티마이저는 같이 있어야된다
         return model
 
-
-
-
-
-
-
     def make_random_data(self):
-        x = np.random.uniform(low = -2, high= 2, size=200)
+        x = np.random.uniform(low=-2, high=2, size=200)
         y = []
         for i in x:
-            r = np.random.normal(loc = 0.0, scale=(0.5 + i * i /3),size= None)
+            r = np.random.normal(loc=0.0, scale=(0.5 + i * i / 3), size=None)
             y.append(r)
-        return x, 1.726*x - 0.84 + np.array(y)
+        return x, 1.726 * x - 0.84 + np.array(y)
 
     @tf.function
     def tf_sum(self):
@@ -109,19 +101,18 @@ class TensorFunction(object):
     def tf_add(self):
         x = [1, 2, 3, 4, 5]
         y = [1, 2, 3, 4, 5]
-        #z = tf.add(x, y)
-        #z = tf.subtract(x,y)
-        z = tf.multiply(x,y)
-        #z = tf.divide(x,y)
+        # z = tf.add(x, y)
+        # z = tf.subtract(x,y)
+        z = tf.multiply(x, y)
+        # z = tf.divide(x,y)
         return z
 
-
     def tf_function(self):
-        mnist = tf.keras.datasets.mnist #mnist = database name
+        mnist = tf.keras.datasets.mnist  # mnist = database name
         (X_train, y_train), (X_test, y_test) = mnist.load_data()
-        X_train,X_test = X_train / 255.0, X_test / 255.0
-        X_train = X_train[... , tf.newaxis] #차원을 추가했다
-        X_test = X_test[... , tf.newaxis] # ... 다!!!!!가지고와라 /tf.newaxis 는 행
+        X_train, X_test = X_train / 255.0, X_test / 255.0
+        X_train = X_train[..., tf.newaxis]  # 차원을 추가했다
+        X_test = X_test[..., tf.newaxis]  # ... 다!!!!!가지고와라 /tf.newaxis 는 행
         train_ds = tf.data.Dataset.from_tensor_slices(
             (X_train, y_train)
         ).shuffle(10000).batch(32)
@@ -137,6 +128,7 @@ class TensorFunction(object):
         plt.savefig(f'{self.vo.context}train_ds.png')
         plt.imshow(test_ds[3])
         plt.savefig(f'{self.vo.context}test_ds.png')
+
 
 class Perceptron(object):  # 퍼셉트론 분류기
 
@@ -338,8 +330,8 @@ class Perceptron(object):  # 퍼셉트론 분류기
         self.n_iter = n_iter  # int 훈련 데이터셋 반복 횟수
         self.random_state = random_state  # int 가중치 무작위 초기화를 위한 난수 생성기
 
-    def fit(self, X, y) -> object:  # 훈련데이터 학습
 
+    def fit(self, X, y) -> object:  # 훈련데이터 학습
         rgen = np.random.RandomState(self.random_state)
         self.w_ = rgen.normal(loc=0.0, scale=0.01, size=1 + X.shape[1])  # 1d-array : 학습된 가중치
         self.errors_ = []  # list 에포크마다 누적된 분류 오류

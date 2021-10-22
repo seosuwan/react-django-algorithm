@@ -31,6 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'admin.aiTrader',
+    'admin.rnn',
     'admin.myCV2',
     'admin.iris',
     'admin.tensor',
