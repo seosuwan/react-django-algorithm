@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'admin.nlp',
     'admin.aiTrader',
     'admin.rnn',
     'admin.myCV2',

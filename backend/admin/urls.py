@@ -29,5 +29,6 @@ urlpatterns = [
     path('api/myCV2/', include('admin.myCV2.urls')),
     path('api/rnn/', include('admin.rnn.urls')),
     path('api/aiTrader/', include('admin.aiTrader.urls')),
+    path('api/nlp/', include('admin.nlp.urls')),
 
 ]
