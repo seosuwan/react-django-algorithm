@@ -31,6 +31,10 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'admin.myCNN',
+    'admin.myGRU',
+    'admin.myGAN',
+    'admin.myLSTM',
     'admin.nlp',
     'admin.aiTrader',
     'admin.rnn',
