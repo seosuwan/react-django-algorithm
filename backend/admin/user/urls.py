@@ -2,6 +2,8 @@ from django.conf.urls import url
 from admin.user import views
 
 urlpatterns = {
-    url(r'^register', views.users),
-    url(r'^list', views.users)
+    url(r'', views.users, name='users'),
+    url(r'/login', views.login),
+    url(r'/<slug:username>', views.users)
+
 }

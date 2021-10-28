@@ -21,7 +21,7 @@ from admin.user import views
 urlpatterns = [
     path('api/connect', include('admin.common.urls')),
     path('api/housing/', include('admin.housing.urls')),
-    path('api/users/', include('admin.user.urls')),
+    path('api/users', include('admin.user.urls')),
     path('api/crime/', include('admin.crime.urls')),
     path('api/crawling/', include('admin.crawling.urls')),
     path('api/tensor/', include('admin.tensor.urls')),
@@ -31,5 +31,4 @@ urlpatterns = [
     path('api/aiTrader/', include('admin.aiTrader.urls')),
     path('api/nlp/', include('admin.nlp.urls')),
     path('api/myGAN/', include('admin.myGAN.urls')),
-
 ]

@@ -131,26 +131,26 @@ class GenerateFashion(object):
             keras.layers.Reshape([28, 28])
         ])
         stacked_ae = keras.models.Sequential([stacked_encoder, stacked_decoder])
-        stacked_ae.compile(loss="binary_crossentropy",
-                           optimizer=keras.optimizers.SGD(learning_rate=1.5),
-                           metrics=[keras.metrics.binary_accuracy(tf.round(y_true), tf.round(y_pred))])
-        history = stacked_ae.fit(X_train, X_train, epochs=20,
-                                 validation_data=(X_valid, X_valid))
-        self.show_reconstructions(stacked_ae)
-        self.save_fig("reconstruction_plot")
+        # stacked_ae.compile(loss="binary_crossentropy",
+        #                    optimizer=keras.optimizers.SGD(learning_rate=1.5),
+        #                    metrics=[keras.metrics.binary_accuracy(tf.round(y_true), tf.round(y_pred))])
+        # history = stacked_ae.fit(X_train, X_train, epochs=20,
+        #                          validation_data=(X_valid, X_valid))
+        # self.show_reconstructions(stacked_ae)
+        # self.save_fig("reconstruction_plot")
 
     '''
     def rounded_accuracy(self, y_true, y_pred): # 135번 라인에 직접 입력함
         return keras.metrics.binary_accuracy(tf.round(y_true), tf.round(y_pred))'''
 
-    def show_reconstructions(self, model, images=X_valid, n_images=5):
-        reconstructions = model.predict(images[:n_images])
-        fig = plt.figure(figsize=(n_images * 1.5, 3))
-        for image_index in range(n_images):
-            plt.subplot(2, n_images, 1 + image_index)
-            self.plot_image(images[image_index])
-            plt.subplot(2, n_images, 1 + n_images + image_index)
-            self.plot_image(reconstructions[image_index])
+    # def show_reconstructions(self, model, images=X_valid, n_images=5):
+    #     reconstructions = model.predict(images[:n_images])
+    #     fig = plt.figure(figsize=(n_images * 1.5, 3))
+    #     for image_index in range(n_images):
+    #         plt.subplot(2, n_images, 1 + image_index)
+    #         self.plot_image(images[image_index])
+    #         plt.subplot(2, n_images, 1 + n_images + image_index)
+    #         self.plot_image(reconstructions[image_index])
 
     def save_fig(self, fig_id, tight_layout=True, fig_extension="png", resolution=300):
         IMAGES_PATH = self.vo.context
