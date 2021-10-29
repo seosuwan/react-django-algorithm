@@ -5,7 +5,7 @@ import { useHistory  } from 'react-router-dom';
 
 export default function UserAdd() {
     const history = useHistory()
-    const SERVER = 'http://localhost:8000'
+    const SERVER = 'http://localhost:8000/api'
     const [join, setjoin] = useState({
         username:'',password:'',email:'',name:'',birth:'', address:''
     })
@@ -18,7 +18,7 @@ export default function UserAdd() {
         })
     }
     const userJoin = joinRequest => 
-    axios.post(`${SERVER}/api/users/users`, JSON.stringify(joinRequest),{headers})
+    axios.post(`${SERVER}/users/join`, JSON.stringify(joinRequest),{headers})
     const headers = {
         'Content-Type': 'application/json',
         'Authorization': 'JWT fefege..'
@@ -45,13 +45,13 @@ export default function UserAdd() {
         <ul>
             <li>
                 <label>
-                    아이디: <input type="text" id="username" name='username' value={username} size="1" minlength="4" maxlength="15" onChange={handleChange}/>
+                    아이디: <input type="text" id="username" name='username' value={username} size="1" minlength="1" maxlength="15" onChange={handleChange}/>
                 </label>
                 <small>4~15자리 이내의 영문과 숫자</small>
             </li>
             <li>
                 <label>
-                    이메일: <input type="email" id="email" name="email" value={email} onChange={handleChange}/>
+                    이메일: <input type="email" id="email" name="email" value={email} onChange={handleChange}/> 
                 </label>
             </li>
             <li>

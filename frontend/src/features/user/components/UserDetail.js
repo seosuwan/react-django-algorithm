@@ -4,16 +4,16 @@ import axios from 'axios';
 
 
 export default function UserDetail() {
-    const SERVER = 'http://localhost:8000'
+    const SERVER = 'http://localhost:8000/api'
     const history = useHistory()
     const [ detail, setDetail] = useState({
-        username:'',password:'',email:'',name:'', regDate: new Date().toLocaleDateString()
+        username:'',password:'',email:'',name:'',birth:'', address:''
     })
 
     const fetchOne = () => {
         const sessionUser = JSON.parse(localStorage.getItem('sessionUser')) 
         alert('사용자 아이디 :' + sessionUser.username)
-        axios.get(`${SERVER}/users/${sessionUser.username}`)
+        axios.get(`${SERVER}/users/detail/${sessionUser.username}`)
         .then(res => {
             setDetail(res.data)
         })
@@ -53,6 +53,17 @@ export default function UserDetail() {
             <li>
                 <label>
                 <span>이름 : {detail.name} </span>
+                    
+                </label>
+            </li>
+            <li>
+                <label>
+                <span>생년월일 : {detail.birth} </span>
+                </label>
+            </li>
+            <li>
+                <label>
+                <span>주소 : {detail.address} </span>
                     
                 </label>
             </li>
